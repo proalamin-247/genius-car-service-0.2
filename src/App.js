@@ -13,6 +13,7 @@ import Checkout from './Pages/Checkout/Checkout/Checkout';
 import ForgetPassword from './Pages/Login/ForgetPassword/ForgetPassword';
 import TermsAndConditions from './Pages/TermsAndConditions/TermsAndConditions';
 import AddService from './Pages/AddService/AddService';
+import ManageServices from './Pages/ManageServices/ManageServices';
 
 function App() {
   return (
@@ -35,6 +36,11 @@ function App() {
         <Route path='/addservice' element={
           <RequireAuth>
             <AddService></AddService>
+          </RequireAuth>
+        }></Route>
+        <Route path='/manageServices' element={
+          <RequireAuth>
+            <ManageServices></ManageServices>
           </RequireAuth>
         }></Route>
         <Route path='/*' element={<NotFound></NotFound>}></Route>

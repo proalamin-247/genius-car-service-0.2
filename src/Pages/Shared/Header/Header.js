@@ -8,7 +8,7 @@ import logo from '../../../images/logo.png'
 
 const Header = () => {
     const [user] = useAuthState(auth);
-    const handaleSignOut =()=>{
+    const handaleSignOut = () => {
         signOut(auth);
     }
     return (
@@ -16,7 +16,7 @@ const Header = () => {
             <Navbar collapseOnSelect sticky='top' expand="lg" bg="primary" variant="dark">
                 <Container>
                     <Navbar.Brand as={Link} to="/">
-                        <img src={logo} height="32"/>
+                        <img src={logo} height="32" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
@@ -34,12 +34,18 @@ const Header = () => {
                         <Nav>
                             <Nav.Link as={Link} to="/about">About</Nav.Link>
                             {
+                                user && <>
+                                    <Nav.Link as={Link} to="/addservice">Add Service</Nav.Link>
+                                    <Nav.Link as={Link} to="/manageServices">Manage Service</Nav.Link>
+                                </>
+                            }
+                            {
                                 user ?
                                     <button className='btn btn-primary' onClick={handaleSignOut}>Sign Out</button>
-                                :
-                                <Nav.Link eventKey={2} as={Link} to="/login">
-                                Login
-                            </Nav.Link>}
+                                    :
+                                    <Nav.Link eventKey={2} as={Link} to="/login">
+                                        Login
+                                    </Nav.Link>}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
