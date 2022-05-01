@@ -14,6 +14,8 @@ import ForgetPassword from './Pages/Login/ForgetPassword/ForgetPassword';
 import TermsAndConditions from './Pages/TermsAndConditions/TermsAndConditions';
 import AddService from './Pages/AddService/AddService';
 import ManageServices from './Pages/ManageServices/ManageServices';
+import { ToastContainer } from 'react-toastify';
+import Orders from './Pages/Orders/Orders';
 
 function App() {
   return (
@@ -28,7 +30,7 @@ function App() {
         <Route path='/forgetpassword' element={<ForgetPassword></ForgetPassword>}></Route>
         <Route path='/termsAndConditions' element={<TermsAndConditions></TermsAndConditions>}></Route>
         <Route path='/service/:serviceId' element={<ServiceDetail></ServiceDetail>}></Route>
-        <Route path='/checkout' element={
+        <Route path='/checkout/:serviceId' element={
           <RequireAuth>
             <Checkout></Checkout>
           </RequireAuth>
@@ -43,10 +45,17 @@ function App() {
             <ManageServices></ManageServices>
           </RequireAuth>
         }></Route>
+        <Route path='/orders' element={
+          <RequireAuth>
+            <Orders></Orders>
+          </RequireAuth>
+        }></Route>
         <Route path='/*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
+    
   );
 }
 

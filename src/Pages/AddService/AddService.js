@@ -1,7 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 
-
 const AddService = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
